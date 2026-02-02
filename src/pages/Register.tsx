@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  // Lấy thêm hàm watch để theo dõi giá trị password
   const {
     register,
     handleSubmit,
@@ -14,7 +13,6 @@ function Register() {
 
   const onSubmit = async (data: any) => {
     try {
-      // Xóa confirmPassword trước khi gửi lên server cho sạch data
       const { confirmPassword, ...userData } = data;
 
       await axios.post("http://localhost:3000/users", userData);
@@ -25,7 +23,6 @@ function Register() {
     }
   };
 
-  // Theo dõi giá trị password để so sánh
   const password = watch("password");
 
   return (

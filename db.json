@@ -1,13 +1,6 @@
 {
   "courses": [
     {
-      "id": 1,
-      "name": "ReactJS Cơ Bản",
-      "credit": 3,
-      "category": "Chuyên ngành",
-      "teacher": "Nguyễn Văn A"
-    },
-    {
       "id": 2,
       "name": "TypeScript",
       "credit": 2,

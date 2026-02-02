@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
-// Đã bỏ import useNavigate để không bị báo lỗi "never read"
 
 type FormInputs = {
   email: string;
@@ -9,23 +8,19 @@ type FormInputs = {
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
-  // Đã bỏ dòng khai báo nav
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
-      // Gọi API tìm user khớp email và password
       const { data: users } = await axios.get(
         `http://localhost:3000/users?email=${data.email}&password=${data.password}`
       );
 
       if (users.length > 0) {
-        // 1. Lưu user vào localStorage
         localStorage.setItem("user", JSON.stringify(users[0]));
         
         alert("Đăng nhập thành công!");
         
-        // 2. Chuyển hướng bằng cách reload trang (để Header cập nhật tên user)
-        // Đây là lý do chúng ta không cần dùng 'nav' nữa
+        
         window.location.href = "/list"; 
       } else {
         alert("Email hoặc mật khẩu không đúng!");

@@ -10,7 +10,6 @@ function App() {
   const nav = useNavigate();
   const [user, setUser] = useState(null);
 
-  // Kiểm tra đăng nhập khi vào trang web
   useEffect(() => {
     const userLocal = localStorage.getItem("user");
     if (userLocal) {
@@ -35,19 +34,31 @@ function App() {
           </Link>
 
           <div className="flex items-center space-x-6">
-            <Link to="/list" className="hover:text-gray-200 font-medium">Danh sách</Link>
-            
+            <Link to="/list" className="hover:text-gray-200 font-medium">
+              Danh sách
+            </Link>
+
             {user ? (
               <div className="flex items-center gap-4">
-                <span className="text-yellow-300 font-semibold">Chào, {(user as any).username || (user as any).email}</span>
-                <button onClick={handleLogout} className="bg-red-500 px-3 py-1 rounded hover:bg-red-600 text-sm font-bold transition">
+                <span className="text-yellow-300 font-semibold">
+                  Chào, {(user as any).username || (user as any).email}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 px-3 py-1 rounded hover:bg-red-600 text-sm font-bold transition"
+                >
                   Thoát
                 </button>
               </div>
             ) : (
               <>
-                <Link to="/login" className="hover:text-gray-200 font-medium">Đăng nhập</Link>
-                <Link to="/register" className="bg-white text-blue-600 px-3 py-1 rounded font-bold hover:bg-gray-100 transition">
+                <Link to="/login" className="hover:text-gray-200 font-medium">
+                  Đăng nhập
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-white text-blue-600 px-3 py-1 rounded font-bold hover:bg-gray-100 transition"
+                >
                   Đăng ký
                 </Link>
               </>
@@ -62,7 +73,7 @@ function App() {
           <Route path="/list" element={<ListPage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/edit/:id" element={<EditPage />} />
-          
+
           {/* Route mới cho Lab 7 */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
